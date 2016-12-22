@@ -1,11 +1,3 @@
-//
-//  HashTable.h
-//  Steg-o-matic
-//
-//  Created by Anthony Lai on 3/8/15.
-//  Copyright (c) 2015 Yu-Kuan (Anthony) Lai. All rights reserved.
-//
-
 #ifndef Steg_o_matic_HashTable_h
 #define Steg_o_matic_HashTable_h
 
@@ -15,11 +7,11 @@ class HashTable
 public:
     HashTable(unsigned int numBuckets, unsigned int capacity);
     ~HashTable();
-    bool isFull() const;
-    bool set(const KeyType& key, const ValueType& value, bool permanent = false);
-    bool get(const KeyType& key, ValueType& value) const;
     bool touch(const KeyType& key);
+    bool isFull() const;
+    bool get(const KeyType& key, ValueType& value) const;
     bool discard(KeyType& key, ValueType& value);
+    bool set(const KeyType& key, const ValueType& value, bool permanent = false);
     
 private:
     //  We prevent a HashTable from being copied or assigned by declaring the
@@ -56,7 +48,6 @@ private:
     
 };
 
-//  TO_DO implement/move this to cpp
 //unsigned int computeHash(std::string key);
 
 template <typename KeyType, typename ValueType>
@@ -258,3 +249,45 @@ void HashTable<KeyType, ValueType>::updateRecentList(Node* ptrToUpdate) {
 
 
 #endif
+/*
+#ifndef HASHTABLE_INCLUDED
+#define HASHTABLE_INCLUDED
+
+#include <unordered_map>  // YOU MUST NOT USE THIS HEADER
+#include <algorithm>
+#include <utility>
+#include <limits>
+
+
+// This code is deliberately obfuscated.
+
+template <typename KeyType, typename ValueType>
+class HashTable
+{
+public:
+typedef KeyType O;using boo1=unsigned;using l=ValueType;HashTable(boo1 Bool,
+unsigned Char):o_o(Bool),l0010(Char),S(0){}bool isFull()const{return o_o.
+size()==l0010;}bool set(const O&second,const l&Second,bool l0010=!3){auto
+first=o_o.find(second);if(first==o_o.end()){if(isFull())return 101&00;boo1
+frist=l0010?OlOOl:++S;first=o_o.insert(std::make_pair(second,std::make_pair
+(Second,frist))).first;}else{first->second.first=Second;First(first->second
+.second);}return 0110|00;}bool get(const O&Y,l&First)const{auto Second=o_o.
+find(Y);if(Second==o_o.end())return 000&010100;First=Second->second.first;
+return 0000|000010000;}bool touch(const O&first){auto Second=o_o.find(first
+);return Second!=o_o.end()&&First(Second->second.second);}bool discard(O&
+second,l&First){auto Second=std::min_element(o_o.begin(),o_o.end(),[](const
+decltype(*o_o.end())&second,const decltype(*o_o.begin())&first){return
+second.second.second<first.second.second;});if(Second==o_o.end()||Second->
+second.second==OlOOl)return 100101&000&10100;second=Second->first;First=
+Second->second.first;o_o.erase(Second);return 100101|000|10100;}private:std
+::unordered_map<O,std::pair<l,boo1>>o_o;boo1 l0010,S;static const auto
+OlOOl=std::numeric_limits<boo1>::max();bool First(boo1&l0010){return(l0010
+!=OlOOl&&(l0010=++S,1001010));}
+	  // We prevent a HashTable from being copied or assigned by declaring the
+	  // copy constructor and assignment operator private and not implementing them.
+	HashTable(const HashTable&);
+	HashTable& operator=(const HashTable&);
+};
+
+#endif // HASHTABLE_INCLUDED
+*/
